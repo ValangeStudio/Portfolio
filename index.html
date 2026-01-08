@@ -7,91 +7,126 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       background: #0f0f0f;
       color: #eaeaea;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      line-height: 1.6;
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 80px 24px;
     }
 
-    .title {
+    h1 {
       font-size: 42px;
-      font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
     .subtitle {
       font-size: 20px;
       color: #a0a0a0;
-      margin-bottom: 48px;
+      margin-bottom: 40px;
     }
 
     .about {
       max-width: 720px;
       font-size: 18px;
-      margin-bottom: 64px;
+      line-height: 1.6;
+      margin-bottom: 60px;
     }
 
-    .video {
-      margin-top: 40px;
-      border-radius: 12px;
+    /* GRID */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 460px);
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .tile {
+      width: 460px;
+      height: 215px;
+      border-radius: 10px;
       overflow: hidden;
+      cursor: default;
       box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+      transition: transform 0.15s ease;
     }
 
-    .video iframe {
+    .tile img {
       width: 100%;
-      height: 506px;
-      border: none;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    footer {
-      margin-top: 100px;
-      font-size: 14px;
-      color: #777;
+    /* WIGGLE ANIMATION */
+
+    @keyframes wiggle {
+      0%   { transform: rotate(0deg) translateX(0); }
+      25%  { transform: rotate(0.4deg) translateX(1px); }
+      50%  { transform: rotate(-0.4deg) translateX(-1px); }
+      75%  { transform: rotate(0.3deg) translateX(1px); }
+      100% { transform: rotate(0deg) translateX(0); }
     }
+
+    .tile:hover {
+      animation: wiggle 0.25s ease-in-out infinite;
+    }
+
+    /* ADAPTIVE (на всякий случай) */
+
+    @media (max-width: 1500px) {
+      .grid {
+        grid-template-columns: repeat(2, 460px);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tile {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 460 / 215;
+      }
+    }
+
   </style>
 </head>
 <body>
 
   <div class="container">
 
-    <h1 class="title">Опытный Unreal Engine разработчик</h1>
+    <h1>Опытный Unreal Engine разработчик</h1>
     <div class="subtitle">Более 9 лет опыта</div>
 
     <div class="about">
       <p>
-        Здравствуйте! Меня зовут <strong>Быстров Иван</strong>.
+        Здравствуйте! Меня зовут Быстров Иван.
         Я инженер-программист и увлечён творческими проектами.
       </p>
-
       <p>
         Мои сильные стороны это терпение и креативность, которые позволили мне стать
         самоучкой и создавать собственные игры.
       </p>
-
       <p>
-        Я целеустремлённый, умею работать в команде и готов много трудиться
-        для достижения результата.
+        Я целеустремлённый, умею работать в команде и много тружусь.
       </p>
     </div>
 
-    <div class="video">
-      <iframe
-        src="https://www.youtube.com"
-        allowfullscreen>
-      </iframe>
+    <div class="grid">
+      <div class="tile"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2455900/header.jpg"></div>
+      <div class="tile"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2455900/header.jpg"></div>
+      <div class="tile"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2455900/header.jpg"></div>
+      <div class="tile"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2455900/header.jpg"></div>
+      <div class="tile"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2455900/header.jpg"></div>
+      <div class="tile"><img src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2455900/header.jpg"></div>
     </div>
-
-    <footer>
-      © Ivan Bystrov · Unreal Engine Developer
-    </footer>
 
   </div>
 
