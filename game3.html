@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Название игры</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #0f0f0f;
+      color: #eaeaea;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .back {
+      display: inline-block;
+      margin-bottom: 32px;
+      color: #a0a0a0;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .back:hover {
+      color: white;
+    }
+
+    h1 {
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+
+    .description {
+      font-size: 18px;
+      max-width: 800px;
+      margin-bottom: 40px;
+      color: #cfcfcf;
+    }
+
+    /* VIDEO */
+
+    .video {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      margin-bottom: 60px;
+    }
+
+    .video iframe {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .shot {
+      cursor: pointer;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    .shot img {
+      width: 100%;
+      display: block;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <a class="back" href="index.html">← Вернуться назад</a>
+
+    <h1>Название игры</h1>
+
+    <div class="description">
+      Описание игры
+    </div>
+
+    <div class="video">
+      <iframe
+        src="https://www.youtube.com/embed/NCKZDdB3R4w"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="gallery">
+      <div class="shot"><img src="https://drive.google.com/uc?id=1x602BQDlfE58o5Xqi3xQ84mk1gEj6j-V"></div>
+      <div class="shot"><img src="https://drive.google.com/uc?id=1x602BQDlfE58o5Xqi3xQ84mk1gEj6j-V"></div>
+      <div class="shot"><img src="https://drive.google.com/uc?id=1x602BQDlfE58o5Xqi3xQ84mk1gEj6j-V"></div>
+      <div class="shot"><img src="https://drive.google.com/uc?id=1x602BQDlfE58o5Xqi3xQ84mk1gEj6j-V"></div>
+      <div class="shot"><img src="https://drive.google.com/uc?id=1x602BQDlfE58o5Xqi3xQ84mk1gEj6j-V"></div>
+      <div class="shot"><img src="https://drive.google.com/uc?id=1x602BQDlfE58o5Xqi3xQ84mk1gEj6j-V"></div>
+    </div>
+
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <img src="">
+  </div>
+
+  <script>
+    const shots = document.querySelectorAll('.shot img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+
+    shots.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    lightbox.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
